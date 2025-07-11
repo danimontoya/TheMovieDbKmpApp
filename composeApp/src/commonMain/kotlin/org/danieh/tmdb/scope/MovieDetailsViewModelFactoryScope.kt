@@ -14,16 +14,12 @@ interface MovieDetailsViewModelFactoryScope {
             databaseScope: DatabaseScope
         ) = object : MovieDetailsViewModelFactoryScope {
             override val movieDetailsViewModelFactory: MovieDetailsViewModelFactory by lazy {
-                with(threadingScope) {
-                    with(networkScope) {
-                        with(databaseScope) {
-                            MovieDetailsViewModelFactory(
-                                syncMovieDetailsUseCase = { syncMovieDetailsUseCase(it) },
-                                observeMovieDetailsUseCase = { observeMovieDetailsUseCase(it) },
-                                dispatchers = dispatchers
-                            )
-                        }
-                    }
+                context(threadingScope, networkScope, databaseScope) {
+                    MovieDetailsViewModelFactory(
+                        syncMovieDetailsUseCase = { syncMovieDetailsUseCase(it) },
+                        observeMovieDetailsUseCase = { observeMovieDetailsUseCase(it) },
+                        dispatchers = threadingScope.dispatchers
+                    )
                 }
             }
         }

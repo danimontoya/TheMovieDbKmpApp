@@ -36,7 +36,9 @@ class TheMovieDbApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val threadingScope = ThreadingScope.invoke(AppDispatcherProvider())
+        val threadingScope = ThreadingScope.invoke(
+            dispatchers = AppDispatcherProvider()
+        )
         val networkScope = NetworkScope.invoke(
             networkService = KtorNetworkService(httpClient)
         )
@@ -47,15 +49,15 @@ class TheMovieDbApp : Application() {
         )
         popularMoviesViewModelFactory =
             PopularMoviesViewModelFactoryScope.invoke(
-                threadingScope,
-                networkScope,
-                databaseScope
+                threadingScope = threadingScope,
+                networkScope = networkScope,
+                databaseScope = databaseScope
             ).popularMoviesViewModelFactory
         movieDetailsViewModelFactory =
             MovieDetailsViewModelFactoryScope.invoke(
-                threadingScope,
-                networkScope,
-                databaseScope
+                threadingScope = threadingScope,
+                networkScope = networkScope,
+                databaseScope = databaseScope
             ).movieDetailsViewModelFactory
     }
 }

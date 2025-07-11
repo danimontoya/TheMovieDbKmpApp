@@ -15,27 +15,14 @@ interface PopularMoviesViewModelFactoryScope {
             databaseScope: DatabaseScope
         ) = object : PopularMoviesViewModelFactoryScope {
             override val popularMoviesViewModelFactory: PopularMoviesViewModelFactory by lazy {
-                with(threadingScope) {
-                    with(networkScope) {
-                        with(databaseScope) {
-                            PopularMoviesViewModelFactory(
-                                syncMoviesUseCase = { syncMoviesUseCase() },
-                                syncGenresUseCase = { syncGenresUseCase() },
-                                observeMoviesUseCase = { observeAllMovies() },
-                                dispatchers = dispatchers
-                            )
-                        }
-                    }
+                context(threadingScope, networkScope, databaseScope) {
+                    PopularMoviesViewModelFactory(
+                        syncMoviesUseCase = { syncMoviesUseCase() },
+                        syncGenresUseCase = { syncGenresUseCase() },
+                        observeMoviesUseCase = { observeAllMovies() },
+                        dispatchers = threadingScope.dispatchers
+                    )
                 }
-//                // No context argument for 'NetworkScope' found / No context argument for 'DatabaseScope' found.
-//                context(threadingScope, networkScope, databaseScope) {
-//                    PopularMoviesViewModelFactory(
-//                        syncMoviesUseCase = { syncMoviesUseCase() },
-//                        syncGenresUseCase = { syncGenresUseCase() },
-//                        observeMoviesUseCase = { observeAllMovies() },
-//                        dispatchers = threadingScope.dispatchers
-//                    )
-//                }
             }
         }
     }
