@@ -2,9 +2,9 @@ package org.danieh.tmdb
 
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import org.danieh.tmdb.data.database.datasource.InMemoryGenreLocalDataSource
-import org.danieh.tmdb.data.database.datasource.InMemoryMovieGenreCrossRefLocalDataSource
-import org.danieh.tmdb.data.database.datasource.InMemoryMovieLocalDataSource
+import org.danieh.tmdb.domain.datasource.InMemoryGenreLocalDataSource
+import org.danieh.tmdb.domain.datasource.InMemoryMovieGenreCrossRefLocalDataSource
+import org.danieh.tmdb.domain.datasource.InMemoryMovieLocalDataSource
 import org.danieh.tmdb.scope.DatabaseScope
 
 fun main() = application {

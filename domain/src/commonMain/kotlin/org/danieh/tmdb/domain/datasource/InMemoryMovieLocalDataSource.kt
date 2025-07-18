@@ -1,11 +1,10 @@
-package org.danieh.tmdb.data.database.datasource
+package org.danieh.tmdb.domain.datasource
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
-import org.danieh.tmdb.domain.datasource.MovieLocalDataSource
 import org.danieh.tmdb.domain.model.Genre
 import org.danieh.tmdb.domain.model.Movie
 
@@ -41,4 +40,6 @@ class InMemoryMovieLocalDataSource(
                 if (index != -1) this[index] = this[index].copy(runtime = runtime)
             }
         }
+
+    suspend fun cleanUpMovies() = _movies.update { emptyList() }
 }

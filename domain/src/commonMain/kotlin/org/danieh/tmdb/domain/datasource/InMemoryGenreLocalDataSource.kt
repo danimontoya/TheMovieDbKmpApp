@@ -1,8 +1,7 @@
-package org.danieh.tmdb.data.database.datasource
+package org.danieh.tmdb.domain.datasource
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
-import org.danieh.tmdb.domain.datasource.GenreLocalDataSource
 import org.danieh.tmdb.domain.model.Genre
 
 class InMemoryGenreLocalDataSource : GenreLocalDataSource {

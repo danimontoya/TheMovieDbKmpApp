@@ -1,7 +1,6 @@
-package org.danieh.tmdb.data.database.datasource
+package org.danieh.tmdb.domain.datasource
 
 import kotlinx.coroutines.flow.MutableStateFlow
-import org.danieh.tmdb.domain.datasource.MovieGenreCrossRefLocalDataSource
 
 class InMemoryMovieGenreCrossRefLocalDataSource : MovieGenreCrossRefLocalDataSource {
 
