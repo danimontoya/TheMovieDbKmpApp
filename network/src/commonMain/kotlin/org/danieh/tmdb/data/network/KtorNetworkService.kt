@@ -27,7 +27,7 @@ class KtorNetworkService(
         val response = client.safeGet("movie/popular?language=en-US&page=1")
 
         return when (response.status.value) {
-            200 -> response.safeReceive(NetworkMovies.serializer())
+            200 -> response.safeReceive<NetworkMovies>()
                 .flatMap { it.toDomain() }
                 .mapLeft { NetworkError.DeserializationError }
 
@@ -39,7 +39,7 @@ class KtorNetworkService(
         val response = client.safeGet("movie/$id?language=en-US")
 
         return when (response.status.value) {
-            200 -> response.safeReceive(NetworkMovieDetail.serializer())
+            200 -> response.safeReceive<NetworkMovieDetail>()
                 .flatMap { it.toDomain() }
                 .mapLeft { error -> NetworkError.DeserializationError.also { println(error.failureReason()) } }
 
@@ -51,7 +51,7 @@ class KtorNetworkService(
         val response = client.safeGet("genre/movie/list?language=en")
 
         return when (response.status.value) {
-            200 -> response.safeReceive(NetworkGenres.serializer())
+            200 -> response.safeReceive<NetworkGenres>()
                 .flatMap { it.toDomain().right() }
                 .mapLeft { error -> NetworkError.DeserializationError.also { println(error.failureReason()) } }
 
@@ -63,7 +63,7 @@ class KtorNetworkService(
         val response = client.safeGet("movie/$id/videos?language=en-US")
 
         return when (response.status.value) {
-            200 -> response.safeReceive(NetworkVideos.serializer())
+            200 -> response.safeReceive<NetworkVideos>()
                 .flatMap { it.toDomain() }
                 .mapLeft { error -> NetworkError.DeserializationError.also { println(error.failureReason()) } }
 
@@ -75,7 +75,7 @@ class KtorNetworkService(
         val response = client.safeGet("movie/$id/credits?language=en-US")
 
         return when (response.status.value) {
-            200 -> response.safeReceive(NetworkCredits.serializer())
+            200 -> response.safeReceive<NetworkCredits>()
                 .flatMap { it.toDomain() }
                 .mapLeft { error -> NetworkError.DeserializationError.also { println(error.failureReason()) } }
 
