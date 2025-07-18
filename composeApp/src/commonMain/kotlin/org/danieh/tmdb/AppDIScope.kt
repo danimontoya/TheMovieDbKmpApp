@@ -1,8 +1,5 @@
 package org.danieh.tmdb
 
-import org.danieh.tmdb.data.database.datasource.InMemoryGenreLocalDataSource
-import org.danieh.tmdb.data.database.datasource.InMemoryMovieGenreCrossRefLocalDataSource
-import org.danieh.tmdb.data.database.datasource.InMemoryMovieLocalDataSource
 import org.danieh.tmdb.data.network.KtorNetworkService
 import org.danieh.tmdb.data.network.httpClient
 import org.danieh.tmdb.domain.usecase.observeAllMovies
@@ -26,11 +23,7 @@ interface AppDIScope {
         operator fun invoke(
             threadingScope: ThreadingScope = ThreadingScope.invoke(AppDispatcherProvider()),
             networkScope: NetworkScope = NetworkScope.invoke(KtorNetworkService(httpClient)),
-            databaseScope: DatabaseScope = DatabaseScope.invoke(
-                movieLocalDataSource = InMemoryMovieLocalDataSource(),
-                genreLocalDataSource = InMemoryGenreLocalDataSource(),
-                movieGenreCrossRefLocalDataSource = InMemoryMovieGenreCrossRefLocalDataSource()
-            )
+            databaseScope: DatabaseScope
         ): AppDIScope = object : AppDIScope {
             override val popularMoviesViewModelFactory: PopularMoviesViewModelFactory by lazy {
                 context(threadingScope, networkScope, databaseScope) {
