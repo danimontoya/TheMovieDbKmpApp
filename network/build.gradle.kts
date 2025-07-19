@@ -41,6 +41,7 @@ kotlin {
     }
 
     sourceSets {
+        val commonTest by getting
         val desktopMain by getting
 
         commonMain.dependencies {
@@ -58,19 +59,10 @@ kotlin {
 
         commonTest.dependencies {
             implementation(libs.kotlin.test)
-            implementation(libs.ktor.client.mock)
         }
 
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
-        }
-
-        getByName("androidDeviceTest") {
-            dependencies {
-                implementation(libs.androidx.runner)
-                implementation(libs.androidx.core)
-                implementation(libs.androidx.testExt.junit)
-            }
         }
 
         iosMain.dependencies {
@@ -79,6 +71,16 @@ kotlin {
 
         desktopMain.dependencies {
             implementation(libs.ktor.client.okhttp)
+        }
+
+        val desktopTest by getting {
+            dependsOn(commonTest)
+            dependencies {
+                implementation(projects.domain)
+                implementation(libs.junit)
+                implementation(libs.kotlinx.coroutines.test)
+                implementation(libs.ktor.client.mock)
+            }
         }
     }
 }

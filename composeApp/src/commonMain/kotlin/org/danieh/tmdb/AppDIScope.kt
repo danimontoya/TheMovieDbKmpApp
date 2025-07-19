@@ -10,8 +10,8 @@ import org.danieh.tmdb.domain.usecase.syncMoviesUseCase
 import org.danieh.tmdb.presentation.MovieDetailsViewModelFactory
 import org.danieh.tmdb.presentation.PopularMoviesViewModelFactory
 import org.danieh.tmdb.scope.AppDispatcherProvider
-import org.danieh.tmdb.scope.DatabaseScope
-import org.danieh.tmdb.scope.NetworkScope
+import org.danieh.tmdb.domain.scope.DatabaseScope
+import org.danieh.tmdb.domain.scope.NetworkScope
 import org.danieh.tmdb.scope.ThreadingScope
 
 interface AppDIScope {

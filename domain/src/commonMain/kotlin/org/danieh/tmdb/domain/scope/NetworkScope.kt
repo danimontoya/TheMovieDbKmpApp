@@ -1,4 +1,4 @@
-package org.danieh.tmdb.scope
+package org.danieh.tmdb.domain.scope
 
 import org.danieh.tmdb.domain.NetworkService
 

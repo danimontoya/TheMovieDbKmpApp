@@ -1,4 +1,4 @@
-package org.danieh.tmdb.scope
+package org.danieh.tmdb.domain.scope
 
 import org.danieh.tmdb.domain.datasource.GenreLocalDataSource
 import org.danieh.tmdb.domain.datasource.MovieGenreCrossRefLocalDataSource

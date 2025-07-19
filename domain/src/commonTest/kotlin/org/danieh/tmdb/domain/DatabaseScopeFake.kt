@@ -3,7 +3,7 @@ package org.danieh.tmdb.domain
 import org.danieh.tmdb.domain.datasource.InMemoryGenreLocalDataSource
 import org.danieh.tmdb.domain.datasource.InMemoryMovieGenreCrossRefLocalDataSource
 import org.danieh.tmdb.domain.datasource.InMemoryMovieLocalDataSource
-import org.danieh.tmdb.scope.DatabaseScope
+import org.danieh.tmdb.domain.scope.DatabaseScope
 
 internal class DatabaseScopeFake : DatabaseScope {
     override val genreLocalDataSource = InMemoryGenreLocalDataSource()

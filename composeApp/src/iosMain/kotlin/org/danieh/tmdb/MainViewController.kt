@@ -9,7 +9,7 @@ import org.danieh.tmdb.data.database.datasource.RoomGenreLocalDataSource
 import org.danieh.tmdb.data.database.datasource.RoomMovieGenreCrossRefLocalDataSource
 import org.danieh.tmdb.data.database.datasource.RoomMovieLocalDataSource
 import org.danieh.tmdb.data.database.getDatabaseBuilder
-import org.danieh.tmdb.scope.DatabaseScope
+import org.danieh.tmdb.domain.scope.DatabaseScope
 
 fun MainViewController() = ComposeUIViewController {
     val database: TheMovieAppDatabase =

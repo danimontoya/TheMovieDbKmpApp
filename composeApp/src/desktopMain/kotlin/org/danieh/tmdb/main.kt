@@ -5,7 +5,7 @@ import androidx.compose.ui.window.application
 import org.danieh.tmdb.domain.datasource.InMemoryGenreLocalDataSource
 import org.danieh.tmdb.domain.datasource.InMemoryMovieGenreCrossRefLocalDataSource
 import org.danieh.tmdb.domain.datasource.InMemoryMovieLocalDataSource
-import org.danieh.tmdb.scope.DatabaseScope
+import org.danieh.tmdb.domain.scope.DatabaseScope
 
 fun main() = application {
     Window(

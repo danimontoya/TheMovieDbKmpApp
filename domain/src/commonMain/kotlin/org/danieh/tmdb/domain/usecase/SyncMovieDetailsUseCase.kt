@@ -2,8 +2,8 @@ package org.danieh.tmdb.domain.usecase
 
 import arrow.core.Either
 import org.danieh.tmdb.domain.NetworkError
-import org.danieh.tmdb.scope.DatabaseScope
-import org.danieh.tmdb.scope.NetworkScope
+import org.danieh.tmdb.domain.scope.DatabaseScope
+import org.danieh.tmdb.domain.scope.NetworkScope
 
 context(networkScope: NetworkScope, databaseScope: DatabaseScope)
 suspend fun syncMovieDetailsUseCase(id: Int): Either<NetworkError, Unit> =
