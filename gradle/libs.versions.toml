@@ -27,6 +27,7 @@ navigation-compose = "2.9.1"
 navigationComposeJetbrains = "2.9.0-beta03"
 roomVersion = "2.7.2"
 sqlite = "2.5.2"
+turbineVersion = "1.2.1"
 kotlinStdlib = "2.2.0"
 runner = "1.6.2"
 core = "1.6.1"
@@ -68,6 +69,7 @@ roomCompiler = { module = "androidx.room:room-compiler", version.ref = "roomVers
 roomRuntime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
 roomTesting = { module = "androidx.room:room-testing", version.ref = "roomVersion" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbineVersion" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
