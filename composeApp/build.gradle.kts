@@ -64,13 +64,24 @@ kotlin {
 
         androidMain.dependencies {
             implementation(projects.database)
-            implementation(libs.roomRuntime)
-            implementation(libs.sqlite.bundled)
             implementation(compose.preview)
             implementation(compose.uiTooling)
             implementation(libs.androidx.activity.compose)
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.roomRuntime)
+            implementation(libs.sqlite.bundled)
+        }
+        androidInstrumentedTest.dependencies {
+            implementation(libs.androidx.compose.uiTestManifest)
+            implementation(libs.androidx.espresso.core)
+            implementation(libs.androidx.lifecycle.runtimeTesting)
+            implementation(libs.androidx.navigation.testing)
+            implementation(libs.compose.testJunit)
+            implementation(libs.junit)
+            implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
         }
         iosMain.dependencies {
             implementation(projects.database)
@@ -90,7 +101,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
-            implementation(libs.androidx.navigation.compose)
+            implementation(libs.androidx.navigation.compose.jetbrains)
             implementation(libs.arrow.core)
             implementation(libs.arrow.fx)
             implementation(libs.coil.compose)
@@ -104,6 +115,8 @@ kotlin {
 
         }
         commonTest.dependencies {
+            @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
             implementation(libs.kotlin.test)
         }
         desktopMain.dependencies {
@@ -112,7 +125,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
         desktopTest.dependencies {
-            implementation(libs.junit)
+            implementation(libs.compose.testJunitDesktop)
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
             implementation(libs.turbine)
@@ -130,6 +143,7 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {
