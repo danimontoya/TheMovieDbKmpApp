@@ -24,11 +24,6 @@ kotlin {
                 group("android")
                 group("ios")
             }
-
-            group("noMobile") {
-                withJvm()
-                withWasmJs()
-            }
         }
     }
 
@@ -58,7 +53,6 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
         commonMain.dependencies {
             implementation(projects.domain)
             implementation(libs.arrow.core)
@@ -71,9 +65,7 @@ kotlin {
             implementation(libs.kotlin.test)
         }
 
-        val mobileMain by getting {
-            dependsOn(commonMain)
-        }
+        val mobileMain by getting
         mobileMain.dependencies {
             implementation(libs.roomRuntime)
             implementation(libs.sqlite.bundled)
@@ -86,20 +78,7 @@ kotlin {
             }
         }
 
-        getByName("androidDeviceTest") {
-            dependencies {
-                implementation(libs.androidx.runner)
-                implementation(libs.androidx.core)
-                implementation(libs.androidx.testExt.junit)
-                implementation(libs.roomTesting)
-            }
-        }
-
-        iosMain {
-            dependsOn(mobileMain)
-            dependencies {
-            }
-        }
+        iosMain { dependsOn(mobileMain) }
     }
 
 }

@@ -54,6 +54,7 @@ import org.danieh.tmdb.data.network.pictureBaseUrl
 import org.danieh.tmdb.domain.model.Cast
 import org.danieh.tmdb.domain.model.Genre
 import org.danieh.tmdb.domain.model.Movie
+import org.danieh.tmdb.domain.model.anyMovie
 import org.danieh.tmdb.presentation.MovieDetailsViewState
 import org.danieh.tmdb.screen.common.BigScreenAwareContent
 import org.danieh.tmdb.util.DateTimeFormatting.dateString
@@ -355,21 +356,8 @@ fun MovieCastCard(cast: Cast) {
 @Composable
 private fun MovieDetailsScreenPreview() = MaterialTheme {
     val viewState = MovieDetailsViewState(
-        movie = Movie(
-            adult = false,
-            backdropPath = "/v9Du2HC3hlknAvGlWhquRbeifwW.jpg",
+        movie = anyMovie(
             id = 539972,
-            originalLanguage = "en",
-            originalTitle = "Kraven the Hunter",
-            overview = "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
-            popularity = 2600.343,
-            posterPath = "/i47IUSsN126K11JUzqQIOi1Mg1M.jpg",
-            releaseDate = LocalDate.parse("2024-12-11"),
-            runtime = 127,
-            title = "Kraven the Hunter",
-            video = false,
-            voteAverage = 6.6,
-            voteCount = 881,
             genres = listOf(Genre(1, "Drama"))
         ),
         cast = listOf(

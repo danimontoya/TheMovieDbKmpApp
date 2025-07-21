@@ -37,10 +37,9 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.compose.LocalPlatformContext
 import coil3.request.ImageRequest
-import kotlinx.datetime.LocalDate
 import org.danieh.tmdb.data.network.pictureBaseUrl
-import org.danieh.tmdb.domain.model.Genre
 import org.danieh.tmdb.domain.model.Movie
+import org.danieh.tmdb.domain.model.anyMovie
 import org.danieh.tmdb.presentation.PopularMoviesViewState
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -223,56 +222,16 @@ private fun SuccessScreenPreview() = MaterialTheme {
     PopularMoviesScreen(
         viewState = PopularMoviesViewState(
             movies = listOf(
-                Movie(
-                    adult = false,
-                    backdropPath = "/rDa3SfEijeRNCWtHQZCwfbGxYvR.jpg",
-                    genres = listOf(Genre(1, "Drama")),
-                    id = 539972,
-                    originalLanguage = "en",
-                    originalTitle = "Kraven the Hunter",
-                    overview = "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
-                    popularity = 5481.159,
-                    posterPath = "/1GvBhRxY6MELDfxFrete6BNhBB5.jpg",
-                    releaseDate = LocalDate.parse("2024-12-11"),
-                    runtime = null,
-                    title = "Kraven the Hunter",
-                    video = false,
-                    voteAverage = 6.5,
-                    voteCount = 671
-                ),
-                Movie(
-                    adult = false,
-                    backdropPath = "/rDa3SfEijeRNCWtHQZCwfbGxYvR.jpg",
-                    genres = listOf(Genre(1, "Drama")),
+                anyMovie(id = 539972),
+                anyMovie(
                     id = 539973,
-                    originalLanguage = "en",
-                    originalTitle = "Kraven the Hunter",
-                    overview = "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
-                    popularity = 5481.159,
-                    posterPath = "/1GvBhRxY6MELDfxFrete6BNhBB5.jpg",
-                    releaseDate = LocalDate.parse("2024-12-11"),
-                    runtime = null,
-                    title = "Kraven the Hunter",
-                    video = false,
-                    voteAverage = 6.5,
-                    voteCount = 671
+                    originalTitle = "Kraven the Hunter 2",
+                    title = "Kraven the Hunter 2",
                 ),
-                Movie(
-                    adult = false,
-                    backdropPath = "/rDa3SfEijeRNCWtHQZCwfbGxYvR.jpg",
-                    genres = listOf(Genre(1, "Drama")),
+                anyMovie(
                     id = 539974,
-                    originalLanguage = "en",
-                    originalTitle = "Kraven the Hunter",
-                    overview = "Kraven Kravinoff's complex relationship with his ruthless gangster father, Nikolai, starts him down a path of vengeance with brutal consequences, motivating him to become not only the greatest hunter in the world, but also one of its most feared.",
-                    popularity = 5481.159,
-                    posterPath = "/1GvBhRxY6MELDfxFrete6BNhBB5.jpg",
-                    releaseDate = LocalDate.parse("2024-12-11"),
-                    runtime = null,
-                    title = "Kraven the Hunter",
-                    video = false,
-                    voteAverage = 6.5,
-                    voteCount = 671
+                    originalTitle = "Kraven the Hunter 3",
+                    title = "Kraven the Hunter 3",
                 ),
             ),
             isLoading = false,

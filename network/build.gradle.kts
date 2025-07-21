@@ -41,8 +41,8 @@ kotlin {
     }
 
     sourceSets {
-        val commonTest by getting
         val desktopMain by getting
+        val desktopTest by getting
 
         commonMain.dependencies {
             implementation(projects.domain)
@@ -57,10 +57,6 @@ kotlin {
             implementation(libs.ktor.utils)
         }
 
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
-
         androidMain.dependencies {
             implementation(libs.ktor.client.okhttp)
         }
@@ -73,14 +69,11 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
         }
 
-        val desktopTest by getting {
-            dependsOn(commonTest)
-            dependencies {
-                implementation(projects.domain)
-                implementation(libs.junit)
-                implementation(libs.kotlinx.coroutines.test)
-                implementation(libs.ktor.client.mock)
-            }
+        desktopTest.dependencies {
+            implementation(projects.domain)
+            implementation(libs.junit)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.ktor.client.mock)
         }
     }
 }

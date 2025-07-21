@@ -6,8 +6,9 @@ import arrow.core.right
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.danieh.tmdb.domain.model.Movie
-import org.danieh.tmdb.domain.usecase.syncMoviesUseCase
+import org.danieh.tmdb.domain.model.anyMovie
 import org.danieh.tmdb.domain.scope.NetworkScope
+import org.danieh.tmdb.domain.usecase.syncMoviesUseCase
 import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
