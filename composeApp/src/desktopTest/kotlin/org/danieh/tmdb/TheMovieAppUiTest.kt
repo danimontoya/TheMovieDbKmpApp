@@ -11,6 +11,7 @@ import androidx.lifecycle.LifecycleRegistry
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.setMain
 import org.danieh.tmdb.domain.model.anyMovie
@@ -23,8 +24,11 @@ class TheMovieAppUiTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
-    val dIScope = TestDIScope.invoke(
-        movies = listOf(anyMovie(id = 1))
+    private val movie = anyMovie(id = 1)
+
+    private val dIScope = TestDIScope.invoke(
+        observeMoviesUseCaseResult = flowOf(listOf(movie)),
+        observeMovieDetailsUseCaseResult = flowOf(movie)
     )
 
     @OptIn(ExperimentalCoroutinesApi::class)
