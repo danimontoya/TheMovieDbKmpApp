@@ -24,21 +24,20 @@ interface TestDIScope : AppDIScope {
             syncMovieDetailsUseCaseResult: Either<NetworkError, Unit> = Unit.right(),
             observeMovieDetailsUseCaseResult: Flow<Movie?> = flowOf(null),
         ): AppDIScope = object : AppDIScope {
-            override val popularMoviesViewModelFactory: PopularMoviesViewModelFactory by lazy {
+            override val popularMoviesViewModelFactory: PopularMoviesViewModelFactory =
                 PopularMoviesViewModelFactory(
                     syncMoviesUseCase = { syncMoviesUseCaseResult },
                     syncGenresUseCase = { syncGenresUseCaseResult },
                     observeMoviesUseCase = { observeMoviesUseCaseResult },
                     dispatchers = threadingScope.dispatchers
                 )
-            }
-            override val movieDetailsViewModelFactory: MovieDetailsViewModelFactory by lazy {
+
+            override val movieDetailsViewModelFactory: MovieDetailsViewModelFactory =
                 MovieDetailsViewModelFactory(
                     syncMovieDetailsUseCase = { syncMovieDetailsUseCaseResult },
                     observeMovieDetailsUseCase = { observeMovieDetailsUseCaseResult },
                     dispatchers = threadingScope.dispatchers
                 )
-            }
         }
     }
 }

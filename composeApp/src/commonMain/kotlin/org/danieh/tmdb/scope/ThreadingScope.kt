@@ -8,10 +8,9 @@ interface ThreadingScope {
     val dispatchers: DispatcherProvider
 
     companion object {
-        operator fun invoke(dispatchers: DispatcherProvider) =
-            object : ThreadingScope {
-                override val dispatchers: DispatcherProvider by lazy { dispatchers }
-            }
+        operator fun invoke(dispatchers: DispatcherProvider) = object : ThreadingScope {
+            override val dispatchers = dispatchers
+        }
     }
 }
 

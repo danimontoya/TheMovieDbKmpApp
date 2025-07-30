@@ -15,9 +15,9 @@ interface DatabaseScope {
             movieGenreCrossRefLocalDataSource: MovieGenreCrossRefLocalDataSource,
             genreLocalDataSource: GenreLocalDataSource
         ) = object : DatabaseScope {
-            override val movieLocalDataSource: MovieLocalDataSource by lazy { movieLocalDataSource }
-            override val movieGenreCrossRefLocalDataSource: MovieGenreCrossRefLocalDataSource by lazy { movieGenreCrossRefLocalDataSource }
-            override val genreLocalDataSource: GenreLocalDataSource by lazy { genreLocalDataSource }
+            override val movieLocalDataSource = movieLocalDataSource
+            override val movieGenreCrossRefLocalDataSource = movieGenreCrossRefLocalDataSource
+            override val genreLocalDataSource = genreLocalDataSource
         }
     }
 }

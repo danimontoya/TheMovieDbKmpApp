@@ -9,7 +9,7 @@ interface NetworkScope {
         operator fun invoke(
             networkService: NetworkService
         ): NetworkScope = object : NetworkScope {
-            override val networkService: NetworkService by lazy { networkService }
+            override val networkService = networkService
         }
     }
 }
